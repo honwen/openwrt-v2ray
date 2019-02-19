@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=v2ray
-PKG_VERSION:=4.13.0
-PKG_RELEASE:=20190118
+PKG_VERSION:=4.16.0
+PKG_RELEASE:=20190215
 PKG_MAINTAINER:=chenhw2 <https://github.com/chenhw2>
 
 # OpenWrt ARCH: arm, i386, x86_64, mips, mipsel
@@ -45,6 +45,7 @@ endef
 
 define Build/Prepare
 	unzip -o -d $(PKG_BUILD_DIR)/ $(DL_DIR)/$(PKG_SOURCE)
+	mv $(DL_DIR)/$(PKG_SOURCE) $(DL_DIR)/v2ray-linux-$(PKG_ARCH)-$(PKG_VERSION)-$(PKG_RELEASE).zip
 endef
 
 define Build/Compile
