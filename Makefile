@@ -12,8 +12,8 @@ PKG_VERSION:=4.18.1
 PKG_RELEASE:=20190415
 PKG_MAINTAINER:=chenhw2 <https://github.com/chenhw2>
 
-# OpenWrt ARCH: arm, i386, x86_64, mips, mipsel
-# Golang ARCH: arm[5-7], 386, amd64, mips, mipsle
+# OpenWrt ARCH: arm, aarch64, i386, x86_64, mips, mipsel
+# Golang ARCH: arm[5-7], arm64, 386, amd64, mips, mipsle
 PKG_ARCH:=$(ARCH)
 ifeq ($(ARCH),mipsel)
 	PKG_ARCH:=mipsle
@@ -23,6 +23,9 @@ ifeq ($(ARCH),i386)
 endif
 ifeq ($(ARCH),x86_64)
 	PKG_ARCH:=64
+endif
+ifeq ($(ARCH),aarch64)
+	PKG_ARCH:=arm64
 endif
 
 PKG_SOURCE:=v2ray-linux-$(PKG_ARCH).zip
@@ -50,8 +53,8 @@ endef
 
 define Build/Compile
 	echo "$(PKG_NAME)Compile Skiped!"
-	[ -f $(PKG_BUILD_DIR)/v2ctl_armv7 ] && mv $(PKG_BUILD_DIR)/v2ctl_armv7 $(PKG_BUILD_DIR)/v2ctl || true
-	[ -f $(PKG_BUILD_DIR)/v2ray_armv7 ] && mv $(PKG_BUILD_DIR)/v2ray_armv7 $(PKG_BUILD_DIR)/v2ray || true
+	[ "V$(ARCH)" == "Varm" ] && ( [ "V$(BOARD)" == "Vbcm53xx" -o "V$(BOARD)" == "Vkirkwood" ] || mv $(PKG_BUILD_DIR)/v2ctl_armv7 $(PKG_BUILD_DIR)/v2ctl ) || true
+	[ "V$(ARCH)" == "Varm" ] && ( [ "V$(BOARD)" == "Vbcm53xx" -o "V$(BOARD)" == "Vkirkwood" ] || mv $(PKG_BUILD_DIR)/v2ray_armv7 $(PKG_BUILD_DIR)/v2ray ) || true
 endef
 
 define Package/v2ray/install
