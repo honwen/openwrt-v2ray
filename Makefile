@@ -53,6 +53,8 @@ endef
 
 define Build/Compile
 	echo "$(PKG_NAME)Compile Skiped!"
+	[ -f $(PKG_BUILD_DIR)/v2ctl_softfloat ] && mv $(PKG_BUILD_DIR)/v2ctl_softfloat $(PKG_BUILD_DIR)/v2ctl || true
+	[ -f $(PKG_BUILD_DIR)/v2ray_softfloat ] && mv $(PKG_BUILD_DIR)/v2ray_softfloat $(PKG_BUILD_DIR)/v2ray || true
 	[ "V$(ARCH)" == "Varm" ] && ( [ "V$(BOARD)" == "Vbcm53xx" -o "V$(BOARD)" == "Vkirkwood" ] || mv $(PKG_BUILD_DIR)/v2ctl_armv7 $(PKG_BUILD_DIR)/v2ctl ) || true
 	[ "V$(ARCH)" == "Varm" ] && ( [ "V$(BOARD)" == "Vbcm53xx" -o "V$(BOARD)" == "Vkirkwood" ] || mv $(PKG_BUILD_DIR)/v2ray_armv7 $(PKG_BUILD_DIR)/v2ray ) || true
 endef
