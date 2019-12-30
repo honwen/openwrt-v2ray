@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018-2019 chenhw2 <https://github.com/chenhw2>
+# Copyright (C) 2018-2020 honwen <https://github.com/honwen>
 #
 # This is free software, licensed under the GNU General Public License v3.
 # See /LICENSE for more information.
@@ -8,9 +8,9 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=v2ray
-PKG_VERSION:=4.21.3
-PKG_RELEASE:=20191028
-PKG_MAINTAINER:=chenhw2 <https://github.com/chenhw2>
+PKG_VERSION:=4.22.0
+PKG_RELEASE:=20191229
+PKG_MAINTAINER:=honwen <https://github.com/honwen>
 
 # OpenWrt ARCH: arm, aarch64, i386, x86_64, mips, mipsel
 # Golang ARCH: arm[5-7], arm64, 386, amd64, mips, mipsle
